@@ -1,32 +1,26 @@
 import java.util.Random;
 
-public class List {
+public class TestData {
 	private int[] key;
 	private int n;
 	
-	public List() {
-		key = new int[0];
-		n = 0;
+	public TestData(int n) {
+		this.n = n;
+		key = new int[n];
 	}
 	
-	public List(int n) {
+	public void randomData() {
 		Random rand = new Random();
-		this.n = n;
-		
-		key = new int[n];
 		for(int i=0; i<n; i++)
-			key[i] = rand.nextInt(100);
+			key[i] = rand.nextInt(1000);
 	}
 	
-	public List(int n, boolean asc) {
-		this.n = n;
-		
-		key = new int[n];
-		for(int i=0; i<n; i++)
+	public void desOrAsc(boolean asc) {
+		for(int i=0; i<this.n; i++)
 			if(asc)
 				key[i] = i+1;
 			else
-				key[i] = n-i;
+				key[i] = this.n-i;
 	}
 	
 	public int getKey(int index) {
@@ -41,10 +35,14 @@ public class List {
 		return n;
 	}
 	
+	public int[] getData() {
+		return key;
+	}
+	
 	public void printList() {
+		System.out.print("List: ");
 		for(int i=0; i<n; i++)
 			System.out.print(key[i] + " ");
 		System.out.println("");
 	}
-	
 }

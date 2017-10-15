@@ -1,11 +1,13 @@
 
 public class MergeSort {
-	private List list;
-	private int count;
+	private TestData list;
+	private int compareCount;
+	private int swapCount;
 	
-	public MergeSort(List list) {
+	public MergeSort(TestData list) {
 		this.list = list;
-		count = 0;
+		this.compareCount = 0;
+		this.swapCount = 0;
 	}
 	
 	public void mergeSort(int first, int last) {
@@ -23,14 +25,16 @@ public class MergeSort {
 	    for (int k = 0; k < N; k++) {
 	    		if(i == mid) {
 	    			aux[k] = list.getKey(j);
+	    			this.swapCount += 1;
 	    			j++;
 	    		}
 	    		else if(j == last) {
 	    			aux[k] = list.getKey(i);
+	    			this.swapCount += 1;
 	    			i++;
 	    		}
 	    		else {
-	    			count++;
+	    			this.compareCount += 1;
 	    			if(list.getKey(j) < list.getKey(i)) {
 	    				aux[k] = list.getKey(j);
 	    				j++;
@@ -46,7 +50,8 @@ public class MergeSort {
 	    		list.setKey(aux[k], first + k);
 	}
 	
-	public int getCount() {
-		return count;
+	public void getCount() {
+		System.out.println("No of swaps: " + swapCount);
+		System.out.println("No of comparisons: " + compareCount);
 	}
 }

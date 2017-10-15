@@ -1,11 +1,11 @@
 
 public class InsertionSort {
-	private List list;
+	private TestData list;
 	private int count;
 	private long start, stop;
 	
 
-	public InsertionSort(List list) {
+	public InsertionSort(TestData list) {
 		count = 0;
 		start = System.nanoTime();
 		for(int i=1; i<list.getN(); i++)
